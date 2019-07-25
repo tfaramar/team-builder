@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { template } from "handlebars";
 
-function Form({member, setMember, team}) {
+function Form({team, addTeamMember}) {
 
+    const [member, setMember] = useState({name:"", email:"", role:""});
     //use an object to track multiple fields:
 
     //create an onChange handler
@@ -15,7 +16,7 @@ function Form({member, setMember, team}) {
     const handleSubmit = event => {
         event.preventDefault();
         console.log("team member", member);
-        team.push(member);
+        addTeamMember([...team, member]);
     }
 
     return (
